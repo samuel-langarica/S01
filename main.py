@@ -17,18 +17,18 @@ class QAEvaluationRequest(BaseModel):
 async def root():
     return {"message": "S01🤓"}
 
-@app.post("/generate-qa")
-async def generate_qa(request: GenerateQARequest):
+@app.post("/generate-questions-from-text")
+async def generate_questions_from_text(request: GenerateQARequest):
     # TODO: Implement QA generation logic
     return {
         "questions": []  # Will return list of generated QA pairs
     }
 
-@app.post("/evaluate-qa")
-async def evaluate_qa(request: QAEvaluationRequest):
+@app.post("/evaluate-question-answer")
+async def evaluate_question_answer(request: QAEvaluationRequest):
     # TODO: Implement answer evaluation logic
     return {
-        "is_correct": False,
+        "score": 0,
         "feedback": ""
     }
 
