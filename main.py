@@ -1,6 +1,10 @@
-from fastapi import FastAPI
-from routes import router
-from fastapi.middleware.cors import CORSMiddleware
+try:
+    from fastapi import FastAPI
+    from fastapi.middleware.cors import CORSMiddleware
+    from routes import router
+except Exception as e:
+    print(f"Import error in main.py: {e}")
+    raise
 
 app = FastAPI()
 

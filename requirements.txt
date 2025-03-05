@@ -1,13 +1,13 @@
 # Core FastAPI dependencies
-fastapi>=0.68.0
-uvicorn>=0.15.0
-pydantic>=1.8.0
+fastapi==0.109.2
+uvicorn==0.27.1
+pydantic==2.6.1
 
 # Google Gemini AI
 google-generativeai==0.3.2
 
 # HTTP client (needed for testing and some integrations)
-httpx>=0.24.1
+httpx==0.26.0
 
 # CORS support (if needed for frontend)
-python-multipart>=0.0.5 
+python-multipart==0.0.7 

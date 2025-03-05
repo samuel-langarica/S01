@@ -1,5 +1,4 @@
 from google import genai
-import PyPDF2
 import os
 
 class GeminiService:
