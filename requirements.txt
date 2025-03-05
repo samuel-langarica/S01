@@ -10,4 +10,7 @@ google-generativeai==0.3.2
 httpx==0.26.0
 
 # CORS support (if needed for frontend)
-python-multipart==0.0.7 
+python-multipart==0.0.7
+
+# PDF text extraction
+PyPDF2==3.0.1 

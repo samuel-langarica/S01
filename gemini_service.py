@@ -1,5 +1,7 @@
 import google.generativeai as genai
 import os
+import PyPDF2
+from io import BytesIO
 
 class GeminiService:
     def __init__(self):
@@ -17,6 +19,17 @@ class GeminiService:
             response = self.model.generate_content(prompt)
             return response.text
         except Exception as e:
-            raise Exception(f"Error in chat: {str(e)}") 
+            raise Exception(f"Error in chat: {str(e)}")
+
+    async def extract_text_from_pdf(self, file: BytesIO) -> str:
+        """Extract text from a PDF file."""
+        try:
+            pdf_reader = PyPDF2.PdfReader(file)
+            text = ""
+            for page in pdf_reader.pages:
+                text += page.extract_text()
+            return text
+        except Exception as e:
+            raise Exception(f"Error extracting text from PDF: {str(e)}")
 
 gemini_service = GeminiService()
