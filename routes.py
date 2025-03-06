@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, UploadFile, File
+from fastapi import APIRouter, HTTPException, Response, UploadFile, File
 from pydantic import BaseModel
 from typing import Optional
 from gemini_service import GeminiService
@@ -24,6 +24,19 @@ class PDFResponse(BaseModel):
 @router.get("/")
 async def root():
     return {"message": "Hello World! 👋"}
+
+@router.post("/incoming-call")
+async def handle_incoming_call():
+    twiml_response = """
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Response>
+        <Say voice="woman">Thank you for calling. This is a custom message.</Say>
+        <Pause length="1"/>
+        <Say voice="woman">If you need further assistance, please let us know.</Say>
+    </Response>
+    """
+    return Response(content=twiml_response, media_type="application/xml")
+
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat_with_context(request: ChatRequest):
